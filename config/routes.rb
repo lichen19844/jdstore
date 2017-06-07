@@ -3,11 +3,13 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   #root 'welcome#index'
-  root 'products#index'
+  root 'welcome#index'
 
-  devise_for :users
+  # devise_for :users
+  devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
 
   namespace :admin do
+    resources :categories
     resources :products
     resources :orders do
       member do
@@ -22,8 +24,16 @@ Rails.application.routes.draw do
   resources :products do
     member do
       post :add_to_cart
+      post :update_price
+    end
+
+    member do
+      post :favorite
+      post :unfavorite
     end
   end
+
+  resources :favorites
 
   resources :carts do
     collection do
