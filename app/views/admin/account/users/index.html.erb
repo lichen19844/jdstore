@@ -1,0 +1,42 @@
+<br>
+<div class="col-md-10 col-md-offset-2">
+  <div class="panel panel-info panel-position">
+    <div class="panel-heading text-center">
+      <h3>注册用户信息</h3>
+    </div>
+    <div class="panel-footer">
+      <table class="table">
+          <thead class="text-center theadfont">
+              <tr>
+                  <td>身份 | 用户名</td>
+                  <td>用户头像</td>
+                  <td>注册邮箱</td>
+              </tr>
+
+          </thead>
+
+          <tbody  class="text-center tbodyfont">
+              <% @users.each do |user| %>
+                <tr>
+                  <% if user.admin? %>
+                    <td> 管理员 | <%= link_to(user.display_name, edit_admin_account_user_path(user)) %></td>
+                  <% else %>
+                    <td> 普通用户 | <%= link_to(user.display_name, edit_admin_account_user_path(user)) %></td>
+                  <% end %>
+
+                  <td>
+                    <% if user.avatar.present? %>
+                      <%= image_tag(user.avatar.thumbimage.url, style: "border-radius:50%; width: 50px; height:50px;", class: "text-center") %>
+                    <% else %>
+                      <img src= "<%= render_user_avatar(current_user, 50) %>">
+                    <% end %>
+                  </td>
+                  <td> <%= user.email %></td>
+                </tr>
+              <% end %>
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+</div>
