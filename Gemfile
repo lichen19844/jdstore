@@ -46,6 +46,7 @@ gem 'rest-client'
 gem 'ckeditor'
 gem 'rqrcode'
 gem 'social-share-button'
+gem 'bullet', group: 'development'
 
 
 group :development, :test do
@@ -71,3 +72,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :production do
   gem 'pg'
 end
+
+gem 'rack-mini-profiler'

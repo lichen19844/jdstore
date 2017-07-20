@@ -14,6 +14,7 @@ class User < ApplicationRecord
 
   has_many :favorite_products, :through => :favorites, :source => :product
 
+  belongs_to :product, counter_cache: true
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable

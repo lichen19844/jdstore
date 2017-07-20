@@ -67,6 +67,7 @@
                                   <%= link_to("", unfavorite_product_path(product),method: :post,  class: "fa fa-thumbs-up fa-1x", style: "color:#337ab7") %><%= product.members.count %>
                                 <% end %>
                               </div>
+                              <div> (<%= product.users.count %> 客户买过 )</div>
                               <button class="btn btn-default update-position"><%= link_to "更新价格", update_price_product_path(product), class: "fontcolor", :method => :post %></button>
                             </div>
                           </div>

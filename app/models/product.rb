@@ -14,4 +14,6 @@ class Product < ApplicationRecord
 
   has_many :members, :through => :favorites, :source => :user
 
+  has_many :users
+
 end
