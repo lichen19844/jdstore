@@ -1,6 +1,12 @@
 class CartItemsController < ApplicationController
   before_action :authenticate_user!
 
+  # def index
+  #   @cart = current_cart
+  #   @cart_items = Cart_item.all
+  #   @cart_items.cart = @cart
+  # end
+
   def destroy
     @cart = current_cart
     @cart_item = @cart.cart_items.find_by(product_id: params[:id])
