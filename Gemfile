@@ -19,7 +19,7 @@ gem 'coffee-rails', '~> 4.2'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
-gem 'turbolinks', '~> 5'
+# gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
@@ -36,15 +36,24 @@ gem 'simple_form'
 gem 'font-awesome-rails'
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'pry'
 gem 'rails-erd'
 gem 'letter_opener', group: :development
 gem 'aasm'
+gem 'carrierwave-qiniu'
+gem 'qiniu-rs'
+gem 'figaro'
+gem 'rest-client'
+gem 'ckeditor'
+gem 'rqrcode'
+gem 'social-share-button'
+gem "awesome_rails_console"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem 'sqlite3'
+  gem 'pry'
+  gem 'awesome_rails_console'
 end
 
 group :development do
@@ -62,3 +71,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :production do
   gem 'pg'
 end
+
+gem 'rack-mini-profiler'
+gem 'bullet', group: 'development'
