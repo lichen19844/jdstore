@@ -1,11 +1,33 @@
-<div>
-    <%= link_to("New Category", new_admin_category_path, class: "btn btn-primary") %>
-</div>
-<br>
-<div>
-  <% if current_user.admin? %>
+<div class="col-md-10 col-md-offset-2">
+  <div class="panel panel-info panel-position">
+    <div class="panel-heading text-center">
+      <h3>注册用户信息</h3>
+    </div>
+    <div class="panel-footer">
+      <table class="table">
+          <thead class="text-center theadfont">
+            <br>
+            <div class="col-md-10 col-md-offset-2">
+              <div>
+                  <%= link_to("New Category", new_admin_category_path, class: "btn btn-primary") %>
+              </div>
+              <br>
+              <div>
+                <% if current_user.admin? %>
 
-      <%= link_to(content_tag(:i, 'Admin 选单', class: 'btn btn-info'), admin_products_path, method: :get) %>
+                    <%= link_to(content_tag(:i, 'Admin 选单', class: 'btn btn-info'), admin_products_path, method: :get) %>
 
-  <% end %>
+                <% end %>
+              </div>
+            </div>
+
+          </thead>
+
+          <tbody  class="text-center tbodyfont">
+
+          </tbody>
+
+        </table>
+      </div>
+    </div>
 </div>

@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Block Chain 后台</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <head>
+    <title>Block Chain 后台</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <%= render "common/navbar" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= render "common/navbar" %>
+
     <div class="container">
       <div class="row">
         <div class="col-md-2">
@@ -26,7 +27,6 @@
     <%= render "common/footer" %>
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-
     <%= yield :handwrite_javascript %>
-</body>
+  </body>
 </html>
