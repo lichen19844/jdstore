@@ -31,7 +31,7 @@
                  <b class = "caret"></b>
                </a>
                <ul class="dropdown-menu">
-                 <li><%= link_to("全部商品", products_path) %></li>
+                 <li><%= link_to("全部币种", products_path) %></li>
                  <% Category.all.each do |category| %><!-- 这里论坛教程说用@category，但我会报错 -->
                     <li><%= link_to(category.name, products_path(category: category.name))%></li><!-- 也可以用category: category.name表达id -->
                  <% end %>
