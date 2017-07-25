@@ -1,14 +1,13 @@
-class Admin::CategoriesController < ApplicationController
-  layout "admin"
-  before_action :authenticate_user!
-  before_action :admin_required
-  # before_action :set_category, only: [:show, :edit, :update, :destroy]
+class Admin::CategoriesController < AdminController
+
+  before_action :find_category, only: [:show, :edit, :update, :destroy]
 
   def index
     @categories = Category.all
   end
 
   def show
+    # @category = Category.find(params[:id])
   end
 
   def new
@@ -25,11 +24,11 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def edit
-    @category = Category.find(params[:id])
+    # @category = Category.find(params[:id])
   end
 
   def update
-    @category = Category.find(params[:id])
+    # @category = Category.find(params[:id])
     if @category.update(params[:id])
       redirect_to admin_categories_path, notice: "更新成功"
     else
@@ -38,14 +37,14 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def detroy
-    @category = Category.find(params[:id])
+    # @category = Category.find(params[:id])
     @category.destroy
     redirct_to admin_categories_path, alert: "已删除"
   end
 
   private
 
-  def set_category
+  def find_category
     @category = Category.find(parms[:id])
   end
 

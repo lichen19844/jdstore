@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
 
   before_action :authenticate_user! , only: [:favorete, :unfavorite]
+  before_action :find_group, only: [:show, :add_to_cart, :favorite, :unfavorite]
 
   def index
     if params[:category].blank?
@@ -32,13 +33,13 @@ class ProductsController < ApplicationController
 
 
   def show
-    @product =Product.find(params[:id])
+    # @product = Product.find(params[:id])
     @photos = @product.photos.all
     @qr = RQRCode::QRCode.new(product_url(@product).to_s, :size => 6, :level => :h)
   end
 
   def add_to_cart
-    @product = Product.find(params[:id])
+    # @product = Product.find(params[:id])
       if !current_cart.products.include?(@product)
         current_cart.add_product_to_cart(@product)
         flash[:notice] = "你已成功将 #{@product.title} 加入购物车"
@@ -70,7 +71,7 @@ class ProductsController < ApplicationController
   end
 
   def favorite
-    @product = Product.find(params[:id])
+    # @product = Product.find(params[:id])
     if !current_user.is_member_of?(@product)
       current_user.favorite!(@product)
       redirect_to :back, notice: "已点赞宝贝！"
@@ -78,12 +79,15 @@ class ProductsController < ApplicationController
   end
 
   def unfavorite
-    @product = Product.find(params[:id])
+    # @product = Product.find(params[:id])
     if current_user.is_member_of?(@product)
       current_user.unfavorite!(@product)
       redirect_to :back, notice: "已取消点赞！"
     end
   end
 
+  def find_group
+    @product = Product.find(params[:id])
+  end
 
 end
