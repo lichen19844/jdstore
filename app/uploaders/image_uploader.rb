@@ -10,7 +10,7 @@ class ImageUploader < CarrierWave::Uploader::Base
     storage :qiniu #或是aws
 
   elsif Rails.env.development?
-    storage :file
+    storage :qiniu #7月25日之前是file，被我改成了qiniu
   end
 
   # Override the directory where uploaded files will be stored.
