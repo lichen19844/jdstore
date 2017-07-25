@@ -3,7 +3,7 @@ class Admin::OrdersController < AdminController
   before_action :find_order, only: [:show, :ship, :shipped, :cancel, :return]
 
   def index
-    @orders = Order.order("id DESC")
+    @orders = Order.includes(:user).order("id DESC")
   end
 
   def show
