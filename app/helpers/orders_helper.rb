@@ -9,6 +9,6 @@ module OrdersHelper
  end
 
  def render_order_created_time(order)
-   order.created_at.to_s(:short)
+   order.created_at.to_s(:long)
  end
 end
