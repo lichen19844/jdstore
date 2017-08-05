@@ -36,6 +36,10 @@ class ProductsController < ApplicationController
     # @product = Product.find(params[:id])
     @photos = @product.photos.all
     @qr = RQRCode::QRCode.new(product_url(@product).to_s, :size => 6, :level => :h)
+
+    set_page_title @product.title    #让每一页的 title 就会变得不一样
+    set_page_description "#{@product.description}"    #让每一页的叙述就会变得不一样
+    page_description = view_context.truncate(@product.description, :length => 100)    #叙述过长的方法
   end
 
   def add_to_cart
