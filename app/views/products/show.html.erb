@@ -42,7 +42,7 @@
           <div class="pd-info-add-cart-btn pull-right">
             <% if @product.quantity.present? && @product.quantity > 0 %>
                <%= link_to("加入购物车", add_to_cart_product_path(@product), method: :post,
-               class: "btn btn-lg btn-add-to-cart pd-show-button") %>
+               :remote => true, class: "btn btn-lg btn-add-to-cart pd-show-button") %>
             <% else %>
                已售罄
             <% end %>
