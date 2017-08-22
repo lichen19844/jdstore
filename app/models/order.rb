@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-  before_create :generate_token
+  # before_create :generate_token
   has_many :product_lists
   belongs_to :user
 
@@ -8,9 +8,11 @@ class Order < ApplicationRecord
   validates :shipping_name, presence: true
   validates :shipping_address, presence: true
 
-  def generate_token
-    self.token = SecureRandom.uuid
-  end
+  # def generate_token
+  #   self.token = SecureRandom.uuid
+  # end
+
+  include Tokenable
 
   def set_payment_with!(method)
     self.update_columns(payment_method: method )

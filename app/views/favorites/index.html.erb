@@ -1,0 +1,9 @@
+<div class="container-fluid">
+  <div class="row favorite-index">
+    <h2 class="text-center">您关注了<%= @products.count %>个商品</h2>
+    <br>
+    <div >
+      <%= render :partial => "favorites_item", :collection => @products, :as => :product %>
+    </div>
+  </div>
+</div>
