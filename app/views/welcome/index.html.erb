@@ -89,7 +89,7 @@
                     </li>
                     <li>
                         <%= link_to(content_tag(:i, '查看所有订单', class: 'fa fa-handshake-o droplist'), admin_orders_path, method: :get) %>
-                    </li>                    
+                    </li>
                     <% end %>
 
                     <li>
@@ -116,8 +116,14 @@
 
     <!-- Top Navigation End -->
 
-    <!-- Sections -->
 
+
+    <!-- Sections -->
+    <!-- Flashes -->
+    <div class="customed-flash" >
+      <%= render "common/flashes" %>
+    </div>
+    <!-- Flashes end -->
     <!-- Section 1 -->
 
     <section class="section1" id="section1">

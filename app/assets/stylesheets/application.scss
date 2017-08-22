@@ -73,7 +73,7 @@
     list-style: none;
     font-size: 14px;
     text-align: left;
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba(0, 0, 0, 0.2);
     border: 1px solid #ccc;
     border: 1px solid rgba(0, 0, 0, 0.05);
     border-radius: 4px;
@@ -1732,4 +1732,12 @@ span.favorite-price {
 
 .tbodyfont {
   color: #000;
+}
+
+/*-------flash讯息----*/
+.customed-flash {
+  position: fixed;
+  width: 100%;
+  padding: 15px 20px 15px 20px;
+  margin: 90px 0px 0px 0px; // 会将 flash 讯息往下移。
 }
