@@ -12718,14 +12718,14 @@ body {
 }
 
 /* line 58, /Users/chenli/railsapp/jdstore/app/assets/stylesheets/application.scss */
-.user-list__item ul, li {
+.user-list_item ul, li {
   background-color: none;
   text-align: center;
   margin-left: 6px;
 }
 
 /* line 64, /Users/chenli/railsapp/jdstore/app/assets/stylesheets/application.scss */
-.user-list__item {
+.user-list_item {
   position: absolute;
   top: 100%;
   left: 0;
@@ -12755,7 +12755,7 @@ body {
 }
 
 /* line 92, /Users/chenli/railsapp/jdstore/app/assets/stylesheets/application.scss */
-.user-list__item ul {
+.user-list_item ul {
   float: left;
   margin-left: 6px;
   line-height: 1.5;

@@ -28,12 +28,12 @@
 
           <!-- Toggle button -->
 
-          <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navigation" aria-expanded="false">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-navigation">
             <span class="sr-only">Block Chain</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
-          </button> -->
+          </button>
 
           <!-- Toggle button -->
 
@@ -44,14 +44,28 @@
           </a>
 
           <!-- Brand End -->
-
         </div>
-        <div class="collapse navbar-collapse" id="top-navigation">
+
+        <div class="navbar-collapse collapse" id="top-navigation">
 
           <!-- Top Navigation Links -->
 
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#section2">首页</a></li>
+          <ul class="nav navbar-nav navbar-right welcome_nav">
+            <!-- 搜索栏 -->
+            <li class="act">
+            <%= form_tag(products_path, :method => "get") do %>
+                <div class="cntr">
+                <!-- <i class="fa fa-line-chart fa-2x text-danger"></i> -->
+                <div class="cntr-innr" >
+                <label class="search">
+                    <input type="text"  name="searcher" value="<%= params[:searcher] %>" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请 输 入 搜 索 信 息">
+                </label>
+                </div>
+                </div>
+            <% end %>
+          </li>
+
+            <li><a href="#section2">&nbsp;&nbsp;&nbsp;&nbsp;首页</a></li>
             <li><%= link_to("交易币种", products_path) %></li>
 
             <!-- 购物车按钮-->
@@ -79,7 +93,7 @@
                     Hi!, <%= current_user.display_name %>
                     <b class="caret"></b>
                 </a>
-                <ul class="user-list__item dropdown-menu" id="user-list__item">
+                <ul class="user-list_item dropdown-menu">
                     <% if current_user.admin? %>
                     <li>
                         <%= link_to("Admin 选单", admin_products_path ) %>

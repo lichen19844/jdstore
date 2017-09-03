@@ -54,13 +54,13 @@
   background-color: #0258A4;
 }
 
-.user-list__item ul,li {
+.user-list_item ul,li {
   background-color: none;
   text-align: center;
   margin-left: 6px;
 }
 
-.user-list__item {
+.user-list_item {
     position: absolute;
     top: 100%;
     left: 0;
@@ -88,7 +88,7 @@
   line-height: 1.5;
 }
 
-.user-list__item ul {
+.user-list_item ul {
     float: left;
     margin-left: 6px;
     line-height: 1.5;
@@ -687,6 +687,15 @@ nav .navright .act  {
     }
   }
 }
+
+.welcome_nav .act  {
+  float: left;
+  margin-top: 15px; /*上边距*/
+  margin-left: 60px;
+  line-height: 1.5;
+  cursor: pointer;
+}
+
 
 @media only screen and (max-width: 766px) {
   nav ul li {

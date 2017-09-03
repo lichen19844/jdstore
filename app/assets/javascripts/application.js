@@ -17,4 +17,6 @@
 //= require ckeditor/init
 //= require social-share-button
 //= require social-share-button/wechat
+//= require bootstrap/collapse
 //= require_tree .
+

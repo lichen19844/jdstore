@@ -2,111 +2,114 @@
   <header class="main_header">
     <div class="row">
         <div class="content">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-navigation">
+        	        <span class="icon-bar"></span>
+        	        <span class="icon-bar"></span>
+        	        <span class="icon-bar"></span>
+        	      </button>
+                <a class="logo" href="/"><img src="../assets/blockchain-logo.png"></a>
+            </div>
 
-          <a class="logo" href="/"><img src="../assets/blockchain-logo.png"></a>
-          <div class="mobile-toggle">
-              <span></span>
-              <span></span>
-              <span></span>
-          </div>
+            <div class="navbar-collapse collapse" id="top-navigation" aria-expanded="false">
+                <ul class="navright">
+                    <!-- 搜索栏 -->
+                    <li class="act">
+                      <%= form_tag(products_path, :method => "get") do %>
+                          <div class="cntr">
+                          <!-- <i class="fa fa-line-chart fa-2x text-danger"></i> -->
+                            <div class="cntr-innr" >
+                              <label class="search">
+                                <input type="text"  name="searcher" value="<%= params[:searcher] %>" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请 输 入 搜 索 信 息">
+                              </label>
+                            </div>
+                          </div>
+                      <% end %>
+                    </li>
 
-           <ul class="navright">
-             <!-- 搜索栏 -->
-             <li class="act">
-               <%= form_tag(products_path, :method => "get") do %>
-                <div class="cntr">
-                 <!-- <i class="fa fa-line-chart fa-2x text-danger"></i> -->
-                 <div class="cntr-innr" >
-                   <label class="search">
-                     <input type="text"  name="searcher" value="<%= params[:searcher] %>" placeholder="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请 输 入 搜 索 信 息">
-                   </label>
-                 </div>
-                </div>
-               <% end %>
-             </li>
-
-             <!-- 商品页分类 -->
-             <li class="dropdown act">
-                 <a class="dropdown-toggle" data-toggle="dropdown">分类浏览
-                 <b class = "caret"></b>
-               </a>
-               <ul class="dropdown-menu">
-                 <li><%= link_to("全部币种", products_path) %></li>
-                 <% Category.all.each do |category| %><!-- 这里论坛教程说用@category，但我会报错 -->
-                    <li><%= link_to(category.name, products_path(category: category.name))%></li><!-- 也可以用category: category.name表达id -->
-                 <% end %>
-               </ul>
-             </li>
-
-              <!-- 商品页按钮 -->
-              <li class="act">
-                <%= link_to products_path do  %>
-                  <i class="cc BTC-alt fa-1x text-warning"></i>货币专区
-                <% end %>
-              </li>
-
-              <!-- 购物车按钮-->
-              <li class="act actcart">
-                  <%= link_to carts_path do  %>
-                     <i class="fa fa-shopping-cart fa-2x"></i>
-                     <span id="cart-count", class="btn__badge"><%= current_cart.products.count %></span>
-                  <% end %>
-              </li>
-
-              <!-- 用户按钮 -->
-              <% if !current_user %>
-                <li class="act"><%= link_to(content_tag(:i, "注册", class: 'fa fa-user-plus'), new_user_registration_path) %> </li>
-                <li class="act"><%= link_to(content_tag(:i, '登入', class: 'fa fa-sign-in'), new_user_session_path) %></li>
-              <% else %>
-                <li>
-                  <% if current_user.avatar.present? %>
-                    <%= image_tag(current_user.avatar.thumbimage.url, style: "border-radius:50%; width: 50px; height:50px;", class: "thumbnail") %>
-                  <% else %>
-                    <!-- <%= image_tag("http://ww1.sinaimg.cn/large/006tNbRwgy1ffzxufbo0lj3069069t8o.jpg",class:"thumbnail",style:"width:60px;height:60px;border-radius:50%;") %> -->
-                    <img src= "<%= render_user_avatar(current_user, 50) %>">
-                  <% end %>
-                </li>
-                <li class="dropdown act">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-smile-o fa-1x"></i>Hi!, <%= current_user.display_name %>
-                        <b class="caret"></b>
+                    <!-- 商品页分类 -->
+                    <li class="dropdown act">
+                        <a class="dropdown-toggle" data-toggle="dropdown">分类浏览
+                        <b class = "caret"></b>
+                        </a>
                         <ul class="dropdown-menu">
-                            <% if current_user.admin? %>
-                            <li>
-                                <%= link_to(content_tag(:i, 'Admin 选单', class: 'cc BTC fa-1x droplist'), admin_products_path, method: :get) %>
-                            </li>
-                            <li>
-                                <%= link_to(content_tag(:i, '查看用户列表', class: 'fa fa-users droplist'), admin_account_users_path, method: :get) %>
-                            </li>
-                            <li>
-                                <%= link_to(content_tag(:i, '查看所有订单', class: 'fa fa-handshake-o droplist'), admin_orders_path, method: :get) %>
-                            </li>
+                            <li><%= link_to("全部币种", products_path) %></li>
+                            <% Category.all.each do |category| %><!-- 这里论坛教程说用@category，但我会报错 -->
+                                <li><%= link_to(category.name, products_path(category: category.name))%></li><!-- 也可以用category: category.name表达id -->
                             <% end %>
-
-                            <li>
-                                <!-- <%= link_to account_orders_path do  %>
-                                   <i class="fa fa-home fa-1x"></i>个人订单列表
-                                <% end %> -->           <!-- 另一种实现方式 -->
-                                <%= link_to(content_tag(:i, '个人订单列表', class: 'fa fa-home fa-1x droplist'), account_orders_path, method: :get) %>
-                            </li>
-
-                            <li>
-                                <%= link_to(content_tag(:i, '我点赞的币', class: 'fa fa-thumbs-up droplist'), favorites_path) %>
-                            </li>
-
-                            <li>
-                                <%= link_to(content_tag(:i, '编辑个人资料', class: 'fa fa-user droplist'), edit_user_registration_path(current_user)) %>
-                            </li>
-
-                            <li>
-                                <%= link_to(content_tag(:i, '登出', class: 'fa fa-sign-out droplist'), destroy_user_session_path, method: :delete) %>
-                            </li>
                         </ul>
-                    </a>
+                    </li>
 
-                </li>
-              <% end %>
-           </ul>
+                    <!-- 商品页按钮 -->
+                    <li class="act">
+                        <%= link_to products_path do  %>
+                        <i class="cc BTC-alt fa-1x text-warning"></i>货币专区
+                        <% end %>
+                    </li>
+
+                    <!-- 购物车按钮-->
+                    <li class="act actcart">
+                        <%= link_to carts_path do  %>
+                            <i class="fa fa-shopping-cart fa-2x"></i>
+                            <span id="cart-count", class="btn__badge"><%= current_cart.products.count %></span>
+                        <% end %>
+                    </li>
+
+                    <!-- 用户按钮 -->
+                    <% if !current_user %>
+                        <li class="act"><%= link_to(content_tag(:i, "注册", class: 'fa fa-user-plus'), new_user_registration_path) %> </li>
+                        <li class="act"><%= link_to(content_tag(:i, '登入', class: 'fa fa-sign-in'), new_user_session_path) %></li>
+                    <% else %>
+                        <li>
+                        <% if current_user.avatar.present? %>
+                            <%= image_tag(current_user.avatar.thumbimage.url, style: "border-radius:50%; width: 50px; height:50px;", class: "thumbnail") %>
+                        <% else %>
+                            <!-- <%= image_tag("http://ww1.sinaimg.cn/large/006tNbRwgy1ffzxufbo0lj3069069t8o.jpg",class:"thumbnail",style:"width:60px;height:60px;border-radius:50%;") %> -->
+                            <img src= "<%= render_user_avatar(current_user, 50) %>">
+                        <% end %>
+                        </li>
+                        <li class="dropdown act">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-smile-o fa-1x"></i>Hi!, <%= current_user.display_name %>
+                                <b class="caret"></b>
+                                <ul class="dropdown-menu">
+                                    <% if current_user.admin? %>
+                                    <li>
+                                        <%= link_to(content_tag(:i, 'Admin 选单', class: 'cc BTC fa-1x droplist'), admin_products_path, method: :get) %>
+                                    </li>
+                                    <li>
+                                        <%= link_to(content_tag(:i, '查看用户列表', class: 'fa fa-users droplist'), admin_account_users_path, method: :get) %>
+                                    </li>
+                                    <li>
+                                        <%= link_to(content_tag(:i, '查看所有订单', class: 'fa fa-handshake-o droplist'), admin_orders_path, method: :get) %>
+                                    </li>
+                                    <% end %>
+
+                                    <li>
+                                        <!-- <%= link_to account_orders_path do  %>
+                                        <i class="fa fa-home fa-1x"></i>个人订单列表
+                                        <% end %> -->           <!-- 另一种实现方式 -->
+                                        <%= link_to(content_tag(:i, '个人订单列表', class: 'fa fa-home fa-1x droplist'), account_orders_path, method: :get) %>
+                                    </li>
+
+                                    <li>
+                                        <%= link_to(content_tag(:i, '我点赞的币', class: 'fa fa-thumbs-up droplist'), favorites_path) %>
+                                    </li>
+
+                                    <li>
+                                        <%= link_to(content_tag(:i, '编辑个人资料', class: 'fa fa-user droplist'), edit_user_registration_path(current_user)) %>
+                                    </li>
+
+                                    <li>
+                                        <%= link_to(content_tag(:i, '登出', class: 'fa fa-sign-out droplist'), destroy_user_session_path, method: :delete) %>
+                                    </li>
+                                </ul>
+                            </a>
+
+                        </li>
+                    <% end %>
+                </ul>
+            </div>
         </div>
      </div>
   <!-- END row -->
