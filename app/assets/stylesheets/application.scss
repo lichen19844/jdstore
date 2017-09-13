@@ -113,6 +113,10 @@
 
 /* Top Navigation Colors */
 
+.navbar-nav > li > .dropdown-menu {
+  background: rgba(1, 71, 133, 0.69);
+}
+
 .navbar-custom.top-collapse .navbar-nav>.active>a:focus,
 .navbar-custom.top-collapse .navbar-nav>.active>a:hover,
 .navbar-custom.top-collapse a:hover {
@@ -130,11 +134,11 @@
 }
 
 .navbar-custom a {
-  color: #FFFFFF !important;
+  color: #fff !important;
 }
 
 .navbar-custom a:hover {
-  color: #FFFFFF !important;
+  color: #014785 !important;
 }
 
 .navbar-custom.top-collapse a {
